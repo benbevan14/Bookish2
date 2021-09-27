@@ -11,6 +11,7 @@ namespace Bookish2.DataAccess
 
         public override string ToString()
         {
+            BookRepository br = new BookRepository();
             return $"Id: {Id}, BookId: {BookId}, BorrowedBy: {BorrowedBy}, DueDate: {DueDate}";
         }
     }
