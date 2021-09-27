@@ -1,0 +1,16 @@
+﻿@model IEnumerable<Bookish2.Web.Models.BookModel>
+
+@{
+    ViewBag.Title = "Books page";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div>
+    <ul>
+        @foreach (var book in @Model)
+        {
+            <li>@book.ToString()</li>
+        }
+    </ul>
+</div>

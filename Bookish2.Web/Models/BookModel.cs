@@ -1,6 +1,11 @@
-﻿namespace Bookish2.DataAccess
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace Bookish2.Web.Models
 {
-    public class Book
+    public class BookModel
     {
         public int Id { get; set; }
         public string Title { get; set; }

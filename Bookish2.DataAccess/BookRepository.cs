@@ -104,13 +104,13 @@ namespace Bookish2.DataAccess
         public void AddBook(string title, string author, string isbn, string barcode, int pages, int numCopies)
         {
             // Add this type of book to the repository
-            string sql = $"INSERT INTO books VALUES('{title}', '{author}', '{isbn}', '{barcode}', '{pages}')";
-            Connection.Execute(sql);
+            string sql = $"INSERT INTO books VALUES('{title}', '{author}', '{isbn}', '{pages}');";
+            int bookId = Connection.QuerySingle<int>(sql + "SELECT SCOPE_IDENTITY()");
 
             Console.WriteLine(title + " was added");
 
             for (int i = 0; i < numCopies; i++)
-                AddCopy(isbn);
+                AddCopy(bookId);
         }
 
         // Copy queries
@@ -120,10 +120,8 @@ namespace Bookish2.DataAccess
         }
 
         // Look up the book id of the copy we're adding and add it to the repository
-        public void AddCopy(string isbn)
+        public void AddCopy(int bookId)
         {
-            var bookId = GetBookIdFromIsbn(isbn);
-
             // Insert a copy into the repo with that book id
             string sql = $"INSERT INTO copies VALUES({bookId}, null, null)";
             Connection.Execute(sql);
