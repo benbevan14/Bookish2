@@ -9,9 +9,9 @@ namespace Bookish2.DataAccess
         public int BorrowedBy { get; set; }
         public DateTime DueDate { get; set; }
 
-        //public override string ToString()
-        //{
-        //    return "";
-        //}
+        public override string ToString()
+        {
+            return $"Id: {Id}, BookId: {BookId}, BorrowedBy: {BorrowedBy}, DueDate: {DueDate}";
+        }
     }
 }

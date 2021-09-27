@@ -9,10 +9,27 @@ namespace Bookish2.ConsoleApp
         {
             BookRepository br = new BookRepository();
 
-            foreach (User user in br.GetAllUsers())
+            foreach (User user in br.GetUsersWithSurname("Bevan"))
             {
                 Console.WriteLine(user);
             }
+
+            Console.WriteLine();
+
+            foreach (Book book in br.GetAllBooks())
+            {
+                Console.WriteLine(book);
+            }
+
+            Console.WriteLine();
+
+            foreach (Copy copy in br.GetAllCopies())
+            {
+                Console.WriteLine(copy);
+            }
+
+            Console.WriteLine("\ndone");
+            Console.ReadLine();
         }
     }
 }
