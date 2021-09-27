@@ -1,15 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Bookish2.DataAccess;
 
 namespace Bookish2.ConsoleApp
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
+            BookRepository br = new BookRepository();
+
+            foreach (User user in br.GetAllUsers())
+            {
+                Console.WriteLine(user);
+            }
         }
     }
 }

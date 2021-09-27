@@ -49,5 +49,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Bookish2.DataAccess\Bookish2.DataAccess.csproj">
+      <Project>{0D11B880-35B7-4EA4-9F7B-B8F4FF840F5A}</Project>
+      <Name>Bookish2.DataAccess</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
