@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Bookish2.Web.Models.BookModel>
+
+@{
+    ViewBag.Title = "Bookish Catalog";
+}
+
+<h2>@ViewBag.Title</h2>
+<hr />
+
+<div>
+    @*<ul>
+        @foreach (var book in @Model)
+        {
+            <li>@book.ToString()</li>
+        }
+    </ul>*@
+    <table>
+        <caption>Bookish Catalog</caption>
+        <tr>
+            <th scope="col">Book ID</th>
+            <th scope="col">Title</th>
+            <th scope="col">Author</th>
+            <th scope="col">Pages</th>
+            <th scope="col">ISBN</th>
+        </tr>
+        @foreach (var book in @Model)
+        {
+            <tr>
+                <th scope="row">@book.Id</th>
+                <td>@book.Title</td>
+                <td>@book.Author</td>
+                <td>@book.Pages</td>
+                <td>@book.ISBN</td>
+            </tr>
+        }
+    </table>
+</div>
