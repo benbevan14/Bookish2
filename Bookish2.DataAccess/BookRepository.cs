@@ -138,5 +138,15 @@ namespace Bookish2.DataAccess
         {
             return Connection.QueryFirstOrDefault<string>($"SELECT Title FROM books WHERE ISBN='{isbn}'");
         }
+
+        public int GetUserIdFromUsername(string username)
+        {
+            return Connection.QuerySingle<int>($"SELECT Id FROM users WHERE Username='{username}'");
+        }
+
+        public string GetTitleFromCopyId(int id)
+        {
+            return Connection.QuerySingle<string>($"SELECT Title FROM books WHERE Id={id}");
+        }
     }
 }

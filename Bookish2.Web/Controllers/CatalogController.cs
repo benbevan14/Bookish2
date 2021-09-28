@@ -23,9 +23,33 @@ namespace Bookish2.Web.Controllers
                     ISBN = b.ISBN,
                     Pages = b.Pages
                 })
+                .OrderBy(model => model.Title)
                 .ToList();
 
             return View(books);
+        }
+
+        public ActionResult UserBooks()
+        {
+            BookRepository br = new BookRepository();
+            string username = System.Web.HttpContext.Current.User.Identity.Name.Split('@')[0];
+            if (username == "")
+            {
+                return View("Error");
+            }
+
+            int userId = br.GetUserIdFromUsername(username);
+            var borrowed = br.GetBorrowedBooks(userId)
+                .Select(c => new CopyModel()
+                {
+                    Id = c.Id,
+                    BookId = c.BookId,
+                    BorrowedBy = c.BorrowedBy,
+                    DueDate = c.DueDate,
+                    Title = br.GetTitleFromCopyId(c.BookId),
+                })
+                .ToList();
+            return View(borrowed);
         }
     }
 }
