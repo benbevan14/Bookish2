@@ -8,12 +8,6 @@
 <hr />
 
 <div>
-    @*<ul>
-        @foreach (var book in @Model)
-        {
-            <li>@book.ToString()</li>
-        }
-    </ul>*@
     <table>
         <caption>Bookish Catalog</caption>
         <tr>
@@ -26,7 +20,7 @@
         @foreach (var book in @Model)
         {
             <tr>
-                <th scope="row">@book.Id</th>
+                <td>@book.Id</td>
                 <td>@book.Title</td>
                 <td>@book.Author</td>
                 <td>@book.Pages</td>
