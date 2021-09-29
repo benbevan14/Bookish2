@@ -1,5 +1,5 @@
 ﻿@using Bookish2.Web.Models
-@model IEnumerable<Bookish2.Web.Models.BookModel>
+@model IEnumerable<BookModel>
 
 @{
     ViewBag.Title = "Bookish Catalog";
@@ -12,11 +12,11 @@
     <table>
         <caption>Bookish Catalog</caption>
         <tr>
-            <th scope="col">Book ID</th>
-            <th scope="col">Title</th>
-            <th scope="col">Author</th>
-            <th scope="col">Pages</th>
-            <th scope="col">ISBN</th>
+            <th scope="col"><a class="sort-link" href="@Url.Action("Index", "Catalog", new {sort="Id"})">Book ID</a></th>
+            <th scope="col"><a class="sort-link" href="@Url.Action("Index", "Catalog", new {sort="Title"})">Title</a></th>
+            <th scope="col"><a class="sort-link" href="@Url.Action("Index", "Catalog", new {sort="Author"})">Author</a></th>
+            <th scope="col"><a class="sort-link" href="@Url.Action("Index", "Catalog", new {sort="Pages"})">Pages</a></th>
+            <th scope="col"><a class="sort-link" href="@Url.Action("Index", "Catalog", new {sort="ISBN"})">ISBN</a></th>
         </tr>
         @foreach (var book in @Model)
         {
@@ -30,4 +30,6 @@
         }
     </table>
 </div>
+
+@*<a class="btn btn-primary" href="@Url.Action("Index", "Catalog", new {sort="Author"})"></a>*@
 

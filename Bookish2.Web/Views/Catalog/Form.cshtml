@@ -1,11 +1,27 @@
 ﻿@model Bookish2.Web.Models.BookModel
 
+<h2>Add A book to the Bookish Catalog</h2>
+
 @using (Html.BeginForm("Form", "Catalog", FormMethod.Post))
 {
-    <span>Title:</span> @Html.TextBoxFor(m => m.Title)<br />
-    <span>Author:</span> @Html.TextBoxFor(m => m.Author)<br />
-    <span>ISBN:</span> @Html.TextBoxFor(m => m.ISBN)<br />
-    <span>Pages:</span> @Html.TextBoxFor(m => m.Pages)<br />
+    <span>Title:</span>
+    <br />
+    @Html.TextBoxFor(m => m.Title)
+    <br />
+    <span>Author:</span>
+    <br />
+    @Html.TextBoxFor(m => m.Author)
+    <br />
+    <span>ISBN:</span>
+    <br />
+    @Html.TextBoxFor(m => m.ISBN)
+    <br />
+    <span>Pages:</span>
+    <br />
+    @Html.TextBoxFor(m => m.Pages)
+    <br />
 
-    <input id="Submit" type="submit" value="submit"/>
+    <br />
+
+    <input id="Submit" type="submit" value="submit" />
 }

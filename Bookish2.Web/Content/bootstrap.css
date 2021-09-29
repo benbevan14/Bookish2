@@ -8288,3 +8288,17 @@ th {
     background-color: #04AA6D;
     color: #fff;
 }
+
+span {
+    font-size: larger;
+}
+
+.sort-link {
+    text-decoration: none;
+    color: #fff;
+}
+
+.sort-link:hover {
+    text-decoration: none;
+    color: #ddd;
+}

@@ -12,7 +12,7 @@ namespace Bookish2.Web.Controllers
     {
         private BookRepository br = new BookRepository();
         // GET: Catalog
-        public ActionResult Index()
+        public ActionResult Index(string sort)
         {
             var books = br.GetAllBooks()
                 .Select(b => new BookModel()
@@ -22,11 +22,22 @@ namespace Bookish2.Web.Controllers
                     Author = b.Author,
                     ISBN = b.ISBN,
                     Pages = b.Pages
-                })
-                .OrderBy(model => model.Title)
-                .ToList();
+                });
 
-            return View(books);
+            if (sort == "Id")
+                books = books.OrderBy(model => model.Id);
+            else if (sort == "Title")
+                books = books.OrderBy(model => model.Title);
+            else if (sort == "Author")
+                books = books.OrderBy(model => model.Author);
+            else if (sort == "Pages")
+                books = books.OrderBy(model => model.Pages);
+            else if (sort == "ISBN")
+                books = books.OrderBy(model => model.ISBN);
+            else
+                books = books.OrderBy(model => model.Title);
+
+            return View(books.ToList());
         }
 
         public ActionResult UserBooks()
