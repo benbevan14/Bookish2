@@ -10,10 +10,10 @@ namespace Bookish2.Web.Controllers
 {
     public class CatalogController : Controller
     {
+        private BookRepository br = new BookRepository();
         // GET: Catalog
         public ActionResult Index()
         {
-            BookRepository br = new BookRepository();
             var books = br.GetAllBooks()
                 .Select(b => new BookModel()
                 {
@@ -31,7 +31,6 @@ namespace Bookish2.Web.Controllers
 
         public ActionResult UserBooks()
         {
-            BookRepository br = new BookRepository();
             string username = System.Web.HttpContext.Current.User.Identity.Name.Split('@')[0];
             if (username == "")
             {
@@ -50,6 +49,21 @@ namespace Bookish2.Web.Controllers
                 })
                 .ToList();
             return View(borrowed);
+        }
+
+        public ActionResult Form()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Form(BookModel model)
+        {
+            br.AddBook(model.Title, model.Author, model.ISBN, model.Pages, 1);
+
+            //ModelState.Clear();
+
+            return RedirectToAction("Form");
         }
     }
 }

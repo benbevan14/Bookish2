@@ -26,11 +26,6 @@ namespace Bookish2.DataAccess
             return Connection.Query<User>("SELECT * FROM users");
         }
 
-        public IEnumerable<User> GetUsersWithSurname(string surname)
-        {
-            return Connection.Query<User>($"SELECT * FROM users WHERE LastName='{surname}'");
-        }
-
         public void BorrowBook(int userId, string isbn)
         {
             var bookId = GetBookIdFromIsbn(isbn);
@@ -101,7 +96,7 @@ namespace Bookish2.DataAccess
             return Connection.Query<Book>("SELECT * FROM books");
         }
 
-        public void AddBook(string title, string author, string isbn, string barcode, int pages, int numCopies)
+        public void AddBook(string title, string author, string isbn, int pages, int numCopies)
         {
             // Add this type of book to the repository
             string sql = $"INSERT INTO books VALUES('{title}', '{author}', '{isbn}', '{pages}');";

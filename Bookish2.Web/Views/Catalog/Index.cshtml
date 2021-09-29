@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Bookish2.Web.Models.BookModel>
+﻿@using Bookish2.Web.Models
+@model IEnumerable<Bookish2.Web.Models.BookModel>
 
 @{
     ViewBag.Title = "Bookish Catalog";
@@ -8,7 +9,6 @@
 <hr />
 
 <div>
-    <p>@System.Web.HttpContext.Current.User.Identity.Name</p>
     <table>
         <caption>Bookish Catalog</caption>
         <tr>
@@ -30,3 +30,4 @@
         }
     </table>
 </div>
+
